@@ -10,7 +10,7 @@
     //----------------------------------------
     if (isset($_GET['func'])) {
         // Working on API functions
-        require_once ('_server/Background_API.php');
+        require_once ('_api/functions.php');
     }
     else {
         // Main Application Run
