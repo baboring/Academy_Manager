@@ -1,0 +1,40 @@
+
+.checkboxes label {
+  display: block;
+  float: left;
+  padding-right: 10px;
+  padding-left: 22px;
+  text-indent: -22px;
+}
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+	clear: both;
+  vertical-align: middle;
+}
+
+.TimeTable {
+  margin:10px auto;
+  border: 1px solid black;
+  border-spacing: 0px;
+  text-align: center;
+}
+
+.TimeTable table th{
+  border: 1px solid black;
+  padding: 5px;
+}
+.TimeRecord{
+  border: 1px solid black;
+  text-align: left;
+  height: 80px;
+  padding: 5px;
+}
+.TimeActived{
+  border: 1px solid black;
+  background-color: #ff72ff;
+  text-align: left;
+  height: 80px;
+  padding: 5px;
+}
