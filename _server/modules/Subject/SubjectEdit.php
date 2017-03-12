@@ -9,12 +9,7 @@
         echo 'no data';
         return;
     }
-    $daysofweek[1] = 'Monday';
-    $daysofweek[2] = 'Tuesday';
-    $daysofweek[3] = 'Wednesday';
-    $daysofweek[4] = 'Thursday';
-    $daysofweek[5] = 'Friday';
-    $daysofweek[6] = 'Saturday';
+
 ?>
     <div>
     <form action="<?=Navi::GetUrl(Navi::Subject,'try_update');?>" method="post">
@@ -56,8 +51,34 @@
                     }; ?>
                 </select><br>
                 <label>Begin Time : </label>
-                <input type="text"  name="begin_time_hour" value="<?=$info['s_begin_time_hour'];?>" size="10"> : <input type="text"  name="begin_time_min" value="<?=$info['s_begin_time_min'];?>" size="10"> ex) 16:30<br>
-                <label>Term Time : </label><input type="text"  name="take_minutes" value="<?=$info['s_take_minutes'];?>" size="10"> Min  ex) 60 Min<br>
+                <select name="begin_time_hour" >
+                <?php 
+                    foreach($hours as $key=>$value) {
+                        $html_tag = '<option value="'.$value.'" ';
+                        $html_tag .= $info['s_begin_time_hour'] == $value ? ' selected >':'>';
+                        $html_tag .= $value.'</option>'."\n";
+                        echo $html_tag;
+                    }; ?>
+                    </select> :
+                <select name="begin_time_min" >
+                <?php 
+                    foreach($minutes as $key=>$value) {
+                        $html_tag = '<option value="'.$value.'" ';
+                        $html_tag .= $info['s_begin_time_min'] == $value ? ' selected >':'>';
+                        $html_tag .= $value.'</option>'."\n";
+                        echo $html_tag;
+                    }; ?>
+                </select> ex) 16:30<br>
+                <label>Term Time : </label>
+                <select name="take_minutes" >
+                <?php 
+                    foreach($terms as $key=>$value) {
+                        $html_tag = '<option value="'.$value.'" ';
+                        $html_tag .= $info['s_take_minutes'] == $value ? ' selected >':'>';
+                        $html_tag .= $value.'</option>'."\n";
+                        echo $html_tag;
+                    }; ?>
+                </select>  Min  ex) 60 Min<br>
 
             </fieldset>
 

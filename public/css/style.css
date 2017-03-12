@@ -216,26 +216,29 @@ label, button {
 	margin: 10px auto; 
 	border: 0px solid darkblue;
 	text-align: left;
-	line-height: 1.9em;
+	line-height: 1.0em;
 }
 .data_account label {
+	clear: left;
+	float: left;
 	margin: 1px 0;
+	padding: 2px 0;
 }
 .data_account input {
 	margin: 1px 0;
 	padding: 2px 0;
 }
+
 /* //////////////////////////////////////////////// */
 .left_float label {
 	clear: left;
 	float: left;
 	width: 120px;
-	padding-left: 40px;
+	padding-left: 35px;
 }
 .left_float p {
-	float: right;
-	width: 70%;
 	text-align:left;
+	padding: 2px 0;
 }
 /* //////////////////////////////////////////////// */
 

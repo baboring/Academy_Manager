@@ -62,15 +62,15 @@
 <!-- local script functions -->
 <script>
 function Callback_Application_Accept(i1, i2) {
-    alert(i1);
+    alert('accept: ' + i1 + ',' + i2);
     document.location.reload();
 }
 function Callback_Application_Enroll(i1, i2) {
-    alert(i1);
+    alert('Enroll: ' + i1 + ',' + i2);
     document.location.reload();
 }
 function Callback_Application_Reject(i1, i2) {
-    alert(i1);
+    alert('Rejact: ' + i1 + ',' + i2);
     document.location.reload();
 }
 
@@ -78,6 +78,7 @@ function Callback_Application_Reject(i1, i2) {
 window.onload = function() {
 
     function clickAccept( uid, user_name ) {
+        alert('uid:'+uid);
         call_API('/Application_Accept/' + uid);
     }
     function clickEnroll( uid, user_name ) {
@@ -87,27 +88,27 @@ window.onload = function() {
         call_API('/Application_Reject/' + uid);
     }
 
-    var buttons = document.getElementsByClassName("btnAccept");
-    for(var i=0; i<buttons.length; i++) {
+    var btnAccept = document.getElementsByClassName("btnAccept");
+    for(var i=0; i<btnAccept.length; i++) {
         (function(n) {
-            buttons[n].addEventListener('click',function(event) {
-                clickAccept(buttons[n].id, buttons[n].name);
+            btnAccept[n].addEventListener('click',function(event) {
+                clickAccept(btnAccept[n].id, btnAccept[n].name);
             });
         })(i);
     }    
-    var buttons = document.getElementsByClassName("btnEnroll");
-    for(var i=0; i<buttons.length; i++) {
+    var btnEnroll = document.getElementsByClassName("btnEnroll");
+    for(var i=0; i<btnEnroll.length; i++) {
         (function(n) {
-            buttons[n].addEventListener('click',function(event) {
-                clickEnroll(buttons[n].id, buttons[n].name);
+            btnEnroll[n].addEventListener('click',function(event) {
+                clickEnroll(btnEnroll[n].id, btnEnroll[n].name);
             });
         })(i);
     }    
-    var buttons = document.getElementsByClassName("btnReject");
-    for(var i=0; i<buttons.length; i++) {
+    var btnReject = document.getElementsByClassName("btnReject");
+    for(var i=0; i<btnReject.length; i++) {
         (function(n) {
-            buttons[n].addEventListener('click',function(event) {
-                clickReject(buttons[n].id, buttons[n].name);
+            btnReject[n].addEventListener('click',function(event) {
+                clickReject(btnReject[n].id, btnReject[n].name);
             });
         })(i);
     }    

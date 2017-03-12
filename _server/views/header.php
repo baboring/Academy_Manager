@@ -14,6 +14,17 @@
 	<div class="app">
     <!-- views ---------------------------------------------- -->
 <?php 
+    $daysofweek[1] = 'Monday';
+    $daysofweek[2] = 'Tuesday';
+    $daysofweek[3] = 'Wednesday';
+    $daysofweek[4] = 'Thursday';
+    $daysofweek[5] = 'Friday';
+    $daysofweek[6] = 'Saturday';
+
+    $hours = array("08","09","10","11","12","13","14","15","16","17","18","19","20");
+    $minutes = array("00","10","20","30","40","50");
+    $terms = array("00","60","120");
+	
 	require_once('_server/views/head/div.navbar.php');
 	require_once('_server/views/CallReceiver_API.php');
 ?>

@@ -11,7 +11,7 @@
         public function __construct($key = null,$val = null) {//private constructor: 
             parent::__construct();
             //using mysql to find out total records
-            $totalRecords = dbCon::GetConnection()->query("Select count(*) from `Professor` ");
+            $totalRecords = dbCon::GetConnection()->query("Select count(*) from `professor` ");
             $this->textNav = true;
             parent::paginate($totalRecords->fetchColumn());
 
@@ -21,7 +21,7 @@
             $szQuery .= ',B.userid as `user id` ';
             $szQuery .= ',B.first_name as `first name` ';
             $szQuery .= ',B.last_name  as `last name` ';
-            $szQuery .= 'from `Professor` as `A` ';
+            $szQuery .= 'from `professor` as `A` ';
             $szQuery .= 'inner join `member` as B ';
             $szQuery .= 'on A.fa_uid = B.uid ';
             switch($key) {

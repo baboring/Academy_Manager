@@ -57,11 +57,12 @@
             }
 
             try {
-                self::UpdateAccount($dataForm['uuid'],$dataForm);
-                // client
+                if(!self::UpdateAccount($dataForm['uuid'],$dataForm))
+                    return false;
+/*                // sub
                 switch($dataForm['type']) {
                     case 100: // student
-                        self::UpdateClient($dataForm['uuid'],$dataForm);
+                        self::UpdateStudent($dataForm['uuid'],$dataForm);
                         break;
                     case 200: // staff
                         self::UpdateStaff($dataForm['uuid'],$dataForm);
@@ -69,7 +70,7 @@
                     case 300: // professor
                         break;
                 }
-                
+ */               
                 dbCon::commit();
             }
             catch(Exception $e)  {  //Some error occured. (i.e. violation of constraints)
@@ -83,7 +84,7 @@
         }
 
         // Update Account
-        private static function UpdateAccount($u_uid,$dataForm) {
+        private static function UpdatePassword($u_uid,$dataForm) {
             // insert query
             $szQuery = "UPDATE member set ";
             $szQuery .= "password = '".$dataForm['password']."'";
@@ -102,9 +103,32 @@
             return false;
         }
 
-        // Update Client
-        private static function UpdateClient($u_uid,$dataForm) {
+        private static function UpdateAccount($u_uid,$dataForm) {
             // insert query
+            $szQuery = "UPDATE `member` set ";
+            $szQuery .= "first_name = '".$dataForm['first_name']."'";
+            $szQuery .= ",last_name = '".$dataForm['last_name']."'";
+            $szQuery .= ",email = '".$dataForm['email']."'";
+            $szQuery .= ",tel = '".$dataForm['tel']."'";
+            $szQuery .= ",address = '".$dataForm['address']."'";
+            $szQuery .= " where uid = '".$u_uid."'";
+
+            //echo $szQuery;
+            try {
+                $res = dbCon::GetConnection()->exec($szQuery);
+                if(!empty($res)) 
+                   return true;
+            }
+            catch(Exception $e)  {  //Some error occured. (i.e. violation of constraints)
+                self::$err_msg = $e;
+                echo $e;
+            }
+            return false;
+        }
+
+        // Update Client
+        private static function UpdateStudent($u_uid,$dataForm) {
+            // update query
             $szQuery = "UPDATE student set ";
             $szQuery .= "first_name = '".$dataForm['first_name']."'";
             $szQuery .= ",last_name = '".$dataForm['last_name']."'";

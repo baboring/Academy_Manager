@@ -28,6 +28,29 @@
                         echo '<option value="'.$value['fa_uid'].'">'.$value['first name'].' '.$value['last name'].'</option>';
                     }; ?>
                 </select><br>
+                <label>Day of week: </label>
+                <select name="begin_dayofweek" >
+                <?php 
+                    foreach($daysofweek as $key=>$value)
+                        echo '<option value="'.$key.'" >'.$value.'</option>'."\n"?>
+                </select><br>
+                <label>Begin Time : </label>
+                <select name="begin_time_hour" >
+                <?php 
+                    foreach($hours as $key=>$value)
+                        echo '<option value="'.$value.'" >'.$value.'</option>'."\n";?>
+                    </select> :
+                <select name="begin_time_min" >
+                <?php 
+                    foreach($minutes as $key=>$value)
+                        echo '<option value="'.$value.'" >'.$value.'</option>'."\n";?>
+                </select> ex) 16:30<br>
+                <label>Term Time : </label>
+                <select name="take_minutes" >
+                <?php 
+                    foreach($terms as $key=>$value)
+                        echo '<option value="'.$value.'" >'.$value.'</option>'."\n";?>
+                </select>  Min  ex) 60 Min<br>                
 
             </fieldset>
 

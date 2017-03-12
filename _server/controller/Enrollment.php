@@ -12,6 +12,12 @@
             self::View();
         }
 
+        public function apply($p_id) {
+            require_once ('_server/views/header.php');
+            require_once ('_server/modules/Enrollment/EnrollmentStatus.php');
+            require_once ('_server/views/footer.php');
+        }
+
         public function view() {
             require_once ('_server/views/header.php');
             ///////////////////////////////////////////
@@ -41,7 +47,7 @@
             if($result) {
             // -------- Success -----------
                 $msgBox->display_contents = 'Success....';
-                $msgBox->button = 'Go to Login';
+                $msgBox->button = 'OK';
                 $msgBox->onClick = "GoUrl('".Navi::GetUrl(Navi::Enrollment)."');";
             } else {
             // -------- failed -----------

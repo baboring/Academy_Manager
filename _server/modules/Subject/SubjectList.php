@@ -4,20 +4,32 @@
     $search_val = GetSafeValueGet('search_val','');
     if(empty($p_id))
         $p_id = null;
+
+    if(SessionManager::IsAdmin()) {
+        echo '<div style="padding:10px 10px 0 0;text-align:right;">';
+        echo '<a href="'.Navi::GetUrl(Navi::Subject,'Add').'" ><button style="background-color:#d2d2f2">Add Subject</button></a>';
+        echo '</div>';
+    }
+        
 ?>
-        <div>
+        <div style="height:365px;">
         <table width="99%" >
             <?php 
             $res = SubjectHandler::ReqData_SubjectList($p_id,$search_key,$search_val);
+            $thead['s_id'] = 'IDX';
+            $thead['s_program_id'] = 'Program';
+            $thead['s_title'] = 'Title';
+            $thead['Name'] = 'Name';
+            $thead['dayofweek'] = 'Day of Week';
+            $thead['time'] = 'time';
+
             $firstLine = "<thead>";
             foreach($res->data as $key=>$row) {
                 $szLine = "<tr>";
-                foreach($row as $key=>$value) {
-                    if($key != 'u_uid') {
-                        $szLine .=" <td>".$value."</td>\n";
-                        if(null != $firstLine)
-                            $firstLine .=" <th>".$key."</th>\n";
-                    }
+                foreach($thead as $key=>$value) {
+                    $szLine .=" <td>".$row[$key]."</td>\n";
+                    if(null != $firstLine)
+                        $firstLine .=" <th>".$value."</th>\n";
                 }
                 // end of column                    
                 if(null != $firstLine) {
@@ -32,11 +44,9 @@
             }; ?>
         </table> </div>
         
-        <hr><a href="<?=Navi::GetUrl(Navi::Subject,'Add');?>" ><button>Add Subject</button></a>
         <div style="text-align:center;">
-            <?php //print
-                echo $res->pageNumbers();
-                //echo $res->itemsPerPage(); ?>
+            <?=$res->pageNumbers(); ?>
+        <hr>
         </div>
     </div>
 

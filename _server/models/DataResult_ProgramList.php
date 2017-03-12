@@ -17,7 +17,8 @@
 
             $szQuery = 'Select ';
             $szQuery .= '* ';
-            $szQuery .= ' from `program` ';
+            $szQuery .= ', (select count(*) from `subject` where s_program_id =  PG.p_id) as subjects';
+            $szQuery .= ' from `program` as PG ';
             $szQuery .= ' LIMIT '.parent::beginNumber().','.$this->itemsPerPage;
             //get record from database and show
             $records = dbCon::GetConnection()->query($szQuery);

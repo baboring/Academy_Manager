@@ -22,9 +22,12 @@
             $szQuery .= ',`last_name` ';
             $szQuery .= ',`email` ';
             $szQuery .= ',`tel` as `Phone` ';
-            $szQuery .= ',`m_code` ';
+            $szQuery .= ',A.m_code ';
+            $szQuery .= ',B.m_display ';
             $szQuery .= ',`reg_date` ';
-            $szQuery .= ' from `member` ';
+            $szQuery .= ' from `member` as A ';
+            $szQuery .= ' join `member_type` as B ';
+            $szQuery .= ' on A.m_code = B.m_code ';
             switch($key) {
                 case 'uid':
                     $szQuery .= ' where `uid` = '.$val.' ';

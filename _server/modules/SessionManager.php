@@ -48,6 +48,9 @@
                 return "";
             return $_SESSION["username"];
         }
+        public static function IsAdmin() {
+            return SessionManager::GetUserTypeCode() == 200;
+        }
         /////////////////////////////////////////
         public static function GetUserTypeName() {
             if(empty($_SESSION["userTypeNames"])) {

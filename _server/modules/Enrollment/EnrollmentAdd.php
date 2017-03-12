@@ -1,6 +1,8 @@
 <?php
     //////////////////////////////////////////////////////////////////////////
     require_once ('_server/models/DataResult_ProgramList.php');
+    if(empty($p_id))
+        $p_id = '';
     
 ?>
     <form name="myForm" action="<?=Navi::GetUrl(Navi::Enrollment,'try_apply');?>" onsubmit="return validateForm(this)" method="post">
@@ -15,7 +17,9 @@
                 <select name="program_id" >
                 <?php 
                     foreach((new DataResult_ProgramList())->data as $key=>$value) {
-                        echo '<option value="'.$value['p_id'].'">'.$value['p_name'].'</option>';
+                        echo '<option value="'.$value['p_id'].'"';
+                        echo ($p_id == $value['p_id'])? ' selected >': '>';
+                        echo $value['p_name'].'</option>';
                     }; ?>
                 </select><br>
                 <label class="checkboxes" style="width:100%" for="terms"><input type="checkbox" id="terms" /><span>I Accept this terms and conditions.</span></label><br>

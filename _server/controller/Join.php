@@ -40,7 +40,7 @@
             if($result) {
             // -------- Success -----------
                 $msgBox->display_contents = 'Success....';
-                $msgBox->button = 'Go to Login';
+                $msgBox->button = 'Ok';
                 $msgBox->onClick = "GoUrl('".Navi::GetUrl(Navi::Login)."');";
             } else {
             // -------- failed -----------

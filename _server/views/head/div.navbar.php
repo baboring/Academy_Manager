@@ -11,11 +11,8 @@
 
     function putMenuStudent() {
         putMenuItem(Navi::Dashboard);
-        putMenuItem(Navi::Enrollment);
         putMenuItem(Navi::Program);
-        putMenuItem(Navi::Member);
-        putMenuItem(Navi::Student);
-        putMenuItem(Navi::Professor);
+        putMenuItem(Navi::Enrollment);
         putMenuItem(Navi::Profile);
     }
 
@@ -70,16 +67,15 @@
       <?php } ?>
     </div>
     
-		<ul class="nav_main">
-			<li id="title"><a href="<?php echo (SessionManager::IsLoggedIn())? Navi::GetUrl(Navi::Dashboard) : URL;?>" ><?=APP_NAME?></a></li>
-      <?php if(SessionManager::IsLoggedIn() ) { ?>
-            <?php DisplayMainNenu(); ?>
-      <?php } ?>
-		</ul>
+    <ul class="nav_main">
+        <li id="title"><a href="<?php echo (SessionManager::IsLoggedIn())? Navi::GetUrl(Navi::Dashboard) : URL;?>" ><?=APP_NAME?></a></li>
+    <?php if(SessionManager::IsLoggedIn() ) {
+            DisplayMainNenu(); 
+        } ?>
+    </ul>
 
 	</nav>        
         </div>
-    </div>
 
 
 </header>
