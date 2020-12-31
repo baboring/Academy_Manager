@@ -1,5 +1,5 @@
 # Academy_Manager
-PHP MVC Frame Example
+PHP MVC Frame Example.
 
 ## License
 MIT License
